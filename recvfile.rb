@@ -5,8 +5,8 @@ require_relative './tunnels/aes_decryption_tunnel'
 require_relative './tunnels/network_reader_tunnel'
 require_relative './tunnels/progress_logging_tunnel'
 
-t = NetworkReaderTunnel.new(42)
-t = AESDecryptionTunnel.new(t, '')
+t = PassiveNetworkReaderTunnel.new(42)
+t = AESDecryptionTunnel.new(t, 'as43')
 t = PorgressLoggingTunnel.new(t)
-v = FileWriterValve.new(t, '')
+v = FileWriterValve.new(t, '.')
 v.flow

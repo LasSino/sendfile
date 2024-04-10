@@ -9,9 +9,9 @@ class PorgressLoggingTunnel < Tunnel
     super()
     @predecessor = predecessor
     @closed = false
+    puts info['name']
     @progressbar = ProgressBar.create(title: info['name'], total: info['size'].to_i,
                                       rate_scale: ->(rate) { rate / 1024 }, format: '<%B> %P %E - %R KB/s')
-    puts info['name']
   end
 
   def drain_out(n_bytes)
